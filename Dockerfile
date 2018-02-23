@@ -24,7 +24,7 @@ ENV SET_CONTAINER_TIMEZONE True
 # Default container timezone as found under the directory /usr/share/zoneinfo/.
 ENV CONTAINER_TIMEZONE America/New_York
 # URL from which to download Elastalert.
-ENV ELASTALERT_URL https://github.com/Yelp/elastalert/archive/v0.0.52.zip
+ENV ELASTALERT_URL https://github.com/cailen/elastalert/archive/master.zip
 # Directory holding configuration for Elastalert and Supervisor.
 ENV CONFIG_DIR /opt/config
 # Elastalert rules directory.
@@ -65,8 +65,6 @@ WORKDIR "${ELASTALERT_HOME}"
 # Install Elastalert.
 RUN python setup.py install && \
     pip install -e . && \
-    pip uninstall twilio --yes && \
-    pip install twilio==6.0.0 && \
 # Install Supervisor.
     easy_install supervisor && \
 # Create directories. The /var/empty directory is used by openntpd.
