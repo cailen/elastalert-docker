@@ -17,14 +17,14 @@
 
 FROM alpine
 
-LABEL maintainer="Ivan Krizsan, https://github.com/krizsan"
+LABEL maintainer="Derek Wiedenhoeft, https://github.com/cailen"
 
 # Set this environment variable to True to set timezone on container start.
-ENV SET_CONTAINER_TIMEZONE False
+ENV SET_CONTAINER_TIMEZONE True
 # Default container timezone as found under the directory /usr/share/zoneinfo/.
-ENV CONTAINER_TIMEZONE Europe/Stockholm
+ENV CONTAINER_TIMEZONE America/New_York
 # URL from which to download Elastalert.
-ENV ELASTALERT_URL https://github.com/Yelp/elastalert/archive/master.zip
+ENV ELASTALERT_URL https://github.com/Yelp/elastalert/archive/v0.0.52.zip
 # Directory holding configuration for Elastalert and Supervisor.
 ENV CONFIG_DIR /opt/config
 # Elastalert rules directory.
@@ -67,16 +67,13 @@ RUN python setup.py install && \
     pip install -e . && \
     pip uninstall twilio --yes && \
     pip install twilio==6.0.0 && \
-
 # Install Supervisor.
     easy_install supervisor && \
-
 # Create directories. The /var/empty directory is used by openntpd.
     mkdir -p "${CONFIG_DIR}" && \
     mkdir -p "${RULES_DIRECTORY}" && \
     mkdir -p "${LOG_DIR}" && \
     mkdir -p /var/empty && \
-
 # Clean up.
     apk del python2-dev && \
     apk del musl-dev && \

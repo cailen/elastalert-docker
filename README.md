@@ -1,8 +1,3 @@
-Note!
-This repository is no longer maintained! Changes to this repository will not result in the build of a new image on DockerHub.
-I suggest anyone interested in further developing this Docker image to fork this repository and create your own Docker image (on DockerHub).
-Thanks for your interest!
-
 # Elastalert Docker Image
 
 Docker image with Elastalert on Alpine Linux.
@@ -27,8 +22,8 @@ es_password: changeme
 
 # Environment
 
-- SET_CONTAINER_TIMEZONE - Set to "True" (without quotes) to set the timezone when starting a container. Default is `False`.
-- CONTAINER_TIMEZONE - Timezone to use in container. Default is `Europe/Stockholm`.
+- SET_CONTAINER_TIMEZONE - Set to "True" (without quotes) to set the timezone when starting a container. Default is `True`.
+- CONTAINER_TIMEZONE - Timezone to use in container. Default is `America/New_York`.
 - ELASTICSEARCH_HOST - IP or hostname for your Elasticsearch host. Defaults to `elasticsearchhost`.
 - ELASTICSEARCH_PORT - Port for your Elasticsearch host. Defaults to `9200`.
 - ELASTICSEARCH_USER - Name of user to log into Ealsticsearch with. Leave undefined for no authentication.
