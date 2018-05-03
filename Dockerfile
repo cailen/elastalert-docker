@@ -20,33 +20,33 @@ FROM alpine
 LABEL maintainer="Derek Wiedenhoeft, https://github.com/cailen"
 
 # Set this environment variable to True to set timezone on container start.
-ENV SET_CONTAINER_TIMEZONE True 
-# Default container timezone as found under the directory /usr/share/zoneinfo/.
-ENV CONTAINER_TIMEZONE America/New_York
-# URL from which to download Elastalert.
-ENV ELASTALERT_URL https://github.com/cailen/elastalert/archive/master.zip
-# Directory holding configuration for Elastalert and Supervisor.
-ENV CONFIG_DIR /opt/config
-# Elastalert rules directory.
-ENV RULES_DIRECTORY /opt/rules
-# Elastalert configuration file path in configuration directory.
-ENV ELASTALERT_CONFIG ${CONFIG_DIR}/elastalert_config.yaml
-# Directory to which Elastalert and Supervisor logs are written.
-ENV LOG_DIR /opt/logs
-# Elastalert home directory full path.
-ENV ELASTALERT_HOME /opt/elastalert
-# Supervisor configuration file for Elastalert.
-ENV ELASTALERT_SUPERVISOR_CONF ${CONFIG_DIR}/elastalert_supervisord.conf
-# Alias, DNS or IP of Elasticsearch host to be queried by Elastalert. Set in default Elasticsearch configuration file.
-ENV ELASTICSEARCH_HOST elasticsearchhost
-# Port on above Elasticsearch host. Set in default Elasticsearch configuration file.
-ENV ELASTICSEARCH_PORT 9200
-# Use TLS to connect to Elasticsearch (True or False)
-ENV ELASTICSEARCH_TLS False
-# Verify TLS
-ENV ELASTICSEARCH_TLS_VERIFY False
-# ElastAlert writeback index
-ENV ELASTALERT_INDEX elastalert_status
+ENV SET_CONTAINER_TIMEZONE=True \
+    # Default container timezone as found under the directory /usr/share/zoneinfo/.
+    CONTAINER_TIMEZONE=America/New_York \
+    # URL from which to download Elastalert.
+    ELASTALERT_URL=https://github.com/cailen/elastalert/archive/master.zip \
+    # Directory holding configuration for Elastalert and Supervisor.
+    CONFIG_DIR=/opt/config \
+    # Elastalert rules directory.
+    RULES_DIRECTORY=/opt/rules \
+    # Elastalert configuration file path in configuration directory.
+    ELASTALERT_CONFIG=${CONFIG_DIR}/elastalert_config.yaml \
+    # Directory to which Elastalert and Supervisor logs are written.
+    LOG_DIR=/opt/logs \
+    # Elastalert home directory full path.
+    ELASTALERT_HOME=/opt/elastalert \
+    # Supervisor configuration file for Elastalert.
+    ELASTALERT_SUPERVISOR_CONF=${CONFIG_DIR}/elastalert_supervisord.conf \
+    # Alias, DNS or IP of Elasticsearch host to be queried by Elastalert. Set in default Elasticsearch configuration file.
+    ELASTICSEARCH_HOST=elasticsearchhost \
+    # Port on above Elasticsearch host. Set in default Elasticsearch configuration file.
+    ELASTICSEARCH_PORT=9200 \
+    # Use TLS to connect to Elasticsearch (True or False)
+    ELASTICSEARCH_TLS=False \
+    # Verify TLS
+    ELASTICSEARCH_TLS_VERIFY=False \
+    # ElastAlert writeback index
+    ELASTALERT_INDEX=elastalert_status
 
 WORKDIR /opt
 
